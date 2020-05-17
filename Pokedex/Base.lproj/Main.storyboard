@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MGa-m7-bwo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Moves-->
+        <scene sceneID="BlT-sB-DZ3">
+            <objects>
+                <viewController storyboardIdentifier="MovesViewController" id="XZS-24-nq7" customClass="MovesViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eXe-vV-XlA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyz-eT-IcF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQC-Qy-vgb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcj-QW-Nks">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Moves" id="U73-iT-1Cs"/>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="lfD-Cw-hUg">
+                                <rect key="frame" x="20" y="88" width="374" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lfD-Cw-hUg" secondAttribute="height" multiplier="187:28" id="qtJ-Ss-Cjn"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="XZS-24-nq7" id="d87-yJ-gGj"/>
+                                </connections>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L42-1J-n8l">
+                                <rect key="frame" x="0.0" y="154" width="414" height="659"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-8H-ANs">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="659"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="XZS-24-nq7" id="U1e-2S-cWL"/>
+                                            <outlet property="delegate" destination="XZS-24-nq7" id="ygV-dL-hDZ"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="yXf-8H-ANs" firstAttribute="top" secondItem="L42-1J-n8l" secondAttribute="top" id="7j3-Ay-1Iu"/>
+                                    <constraint firstAttribute="trailing" secondItem="yXf-8H-ANs" secondAttribute="trailing" id="Qbb-5b-GPN"/>
+                                    <constraint firstAttribute="bottom" secondItem="yXf-8H-ANs" secondAttribute="bottom" id="lao-bA-1j7"/>
+                                    <constraint firstItem="yXf-8H-ANs" firstAttribute="leading" secondItem="L42-1J-n8l" secondAttribute="leading" id="nqX-qR-mag"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NQC-Qy-vgb" firstAttribute="top" secondItem="eXe-vV-XlA" secondAttribute="top" id="2Ca-QD-oez"/>
+                            <constraint firstItem="L42-1J-n8l" firstAttribute="trailing" secondItem="eXe-vV-XlA" secondAttribute="trailing" id="4UW-7w-lKQ"/>
+                            <constraint firstAttribute="trailing" secondItem="NQC-Qy-vgb" secondAttribute="trailing" id="9OQ-yX-MhL"/>
+                            <constraint firstItem="NQC-Qy-vgb" firstAttribute="leading" secondItem="eXe-vV-XlA" secondAttribute="leading" id="JXd-Sp-60O"/>
+                            <constraint firstAttribute="trailing" secondItem="qyz-eT-IcF" secondAttribute="trailing" id="LHs-l5-7xv"/>
+                            <constraint firstAttribute="bottom" secondItem="qyz-eT-IcF" secondAttribute="bottom" id="Nya-6O-h0b"/>
+                            <constraint firstItem="L42-1J-n8l" firstAttribute="leading" secondItem="eXe-vV-XlA" secondAttribute="leading" id="Oq7-Ob-r2F"/>
+                            <constraint firstItem="Tcj-QW-Nks" firstAttribute="leading" secondItem="XqY-IV-r7P" secondAttribute="leading" id="ZFg-Fr-aRD"/>
+                            <constraint firstAttribute="bottom" secondItem="NQC-Qy-vgb" secondAttribute="bottom" id="dac-KA-W7K"/>
+                            <constraint firstItem="qyz-eT-IcF" firstAttribute="leading" secondItem="eXe-vV-XlA" secondAttribute="leading" id="dug-eh-bc3"/>
+                            <constraint firstItem="lfD-Cw-hUg" firstAttribute="top" secondItem="Tcj-QW-Nks" secondAttribute="bottom" id="euN-pu-deK"/>
+                            <constraint firstItem="Tcj-QW-Nks" firstAttribute="top" secondItem="XqY-IV-r7P" secondAttribute="top" id="fRS-NW-C8d"/>
+                            <constraint firstItem="XqY-IV-r7P" firstAttribute="trailing" secondItem="Tcj-QW-Nks" secondAttribute="trailing" id="hLW-RM-Q7l"/>
+                            <constraint firstItem="qyz-eT-IcF" firstAttribute="top" secondItem="eXe-vV-XlA" secondAttribute="top" id="j6l-iI-Lap"/>
+                            <constraint firstItem="L42-1J-n8l" firstAttribute="top" secondItem="lfD-Cw-hUg" secondAttribute="bottom" constant="10" id="lYS-HP-aMq"/>
+                            <constraint firstItem="L42-1J-n8l" firstAttribute="bottom" secondItem="XqY-IV-r7P" secondAttribute="bottom" id="pMb-ES-rt6"/>
+                            <constraint firstItem="lfD-Cw-hUg" firstAttribute="centerX" secondItem="Tcj-QW-Nks" secondAttribute="centerX" id="s1P-Bo-jB9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XqY-IV-r7P"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Moves" image="InactiveIconTwo" selectedImage="ActiveIconTwo" id="KI6-dE-x1m"/>
+                    <connections>
+                        <outlet property="searchBar" destination="lfD-Cw-hUg" id="zze-Nb-32k"/>
+                        <outlet property="tableView" destination="yXf-8H-ANs" id="OnD-38-6fj"/>
+                        <outlet property="viewOpacity" destination="qyz-eT-IcF" id="7Bc-Mv-UmA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48u-1A-a4y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-181.15942028985509" y="503.57142857142856"/>
+        </scene>
+        <!--Items-->
+        <scene sceneID="2CO-ns-AcR">
+            <objects>
+                <viewController storyboardIdentifier="ItemsViewController" id="PzC-e4-EWB" customClass="ItemsViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yva-jF-7HJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDO-hw-UgF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rob-IP-E73">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgj-a2-YyU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Items" id="PtX-un-WSM"/>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="17e-LP-mGm">
+                                <rect key="frame" x="20" y="88" width="374" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="17e-LP-mGm" secondAttribute="height" multiplier="187:28" id="OGr-KE-gcE"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zq3-pQ-2JM">
+                                <rect key="frame" x="0.0" y="154" width="414" height="659"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a83-fK-EaW">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="659"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="PzC-e4-EWB" id="x70-l5-vtq"/>
+                                            <outlet property="delegate" destination="PzC-e4-EWB" id="sLc-Ri-afz"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="a83-fK-EaW" firstAttribute="leading" secondItem="zq3-pQ-2JM" secondAttribute="leading" id="GOR-5W-LKF"/>
+                                    <constraint firstAttribute="bottom" secondItem="a83-fK-EaW" secondAttribute="bottom" id="JQk-HD-3hk"/>
+                                    <constraint firstAttribute="trailing" secondItem="a83-fK-EaW" secondAttribute="trailing" id="SC8-FM-bum"/>
+                                    <constraint firstItem="a83-fK-EaW" firstAttribute="top" secondItem="zq3-pQ-2JM" secondAttribute="top" id="p2k-cM-rpk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rob-IP-E73" firstAttribute="leading" secondItem="Yva-jF-7HJ" secondAttribute="leading" id="1Pv-MB-SP2"/>
+                            <constraint firstItem="dbZ-MQ-kfY" firstAttribute="bottom" secondItem="zq3-pQ-2JM" secondAttribute="bottom" id="3ZO-sb-yDN"/>
+                            <constraint firstItem="Fgj-a2-YyU" firstAttribute="trailing" secondItem="dbZ-MQ-kfY" secondAttribute="trailing" id="473-MR-m33"/>
+                            <constraint firstItem="17e-LP-mGm" firstAttribute="centerX" secondItem="Fgj-a2-YyU" secondAttribute="centerX" id="871-Tc-Ytj"/>
+                            <constraint firstItem="rob-IP-E73" firstAttribute="top" secondItem="Yva-jF-7HJ" secondAttribute="top" id="CU7-Db-yoF"/>
+                            <constraint firstItem="HDO-hw-UgF" firstAttribute="trailing" secondItem="dbZ-MQ-kfY" secondAttribute="trailing" id="Djv-DZ-lqO"/>
+                            <constraint firstAttribute="trailing" secondItem="rob-IP-E73" secondAttribute="trailing" id="EOo-MU-out"/>
+                            <constraint firstItem="HDO-hw-UgF" firstAttribute="top" secondItem="Yva-jF-7HJ" secondAttribute="top" id="H0W-eo-IyK"/>
+                            <constraint firstItem="HDO-hw-UgF" firstAttribute="leading" secondItem="dbZ-MQ-kfY" secondAttribute="leading" id="JTL-Kv-JfM"/>
+                            <constraint firstItem="dbZ-MQ-kfY" firstAttribute="trailing" secondItem="zq3-pQ-2JM" secondAttribute="trailing" id="Vxt-WI-7Uk"/>
+                            <constraint firstItem="17e-LP-mGm" firstAttribute="top" secondItem="Fgj-a2-YyU" secondAttribute="bottom" id="YNq-Ka-J0r"/>
+                            <constraint firstItem="HDO-hw-UgF" firstAttribute="bottom" secondItem="Yva-jF-7HJ" secondAttribute="bottom" id="Ygb-LM-EEd"/>
+                            <constraint firstItem="Fgj-a2-YyU" firstAttribute="leading" secondItem="dbZ-MQ-kfY" secondAttribute="leading" id="a9D-Fn-bct"/>
+                            <constraint firstAttribute="bottom" secondItem="rob-IP-E73" secondAttribute="bottom" id="eMg-OT-nEd"/>
+                            <constraint firstItem="Fgj-a2-YyU" firstAttribute="top" secondItem="dbZ-MQ-kfY" secondAttribute="top" id="fRe-fq-RU3"/>
+                            <constraint firstItem="zq3-pQ-2JM" firstAttribute="top" secondItem="17e-LP-mGm" secondAttribute="bottom" constant="10" id="owf-HZ-6hP"/>
+                            <constraint firstItem="zq3-pQ-2JM" firstAttribute="leading" secondItem="dbZ-MQ-kfY" secondAttribute="leading" id="qJD-M1-Mhp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dbZ-MQ-kfY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Items" image="InactiveIconThree" selectedImage="ActiveIconThree" id="dxl-NJ-FaR"/>
+                    <connections>
+                        <outlet property="searchBar" destination="17e-LP-mGm" id="IRx-3w-SiJ"/>
+                        <outlet property="tableView" destination="a83-fK-EaW" id="ok1-0a-mou"/>
+                        <outlet property="viewOpacity" destination="HDO-hw-UgF" id="vzR-RF-OTD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkw-e8-sRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-965" y="907"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZqU-5u-dQ2">
+            <objects>
+                <tabBarController id="MGa-m7-bwo" customClass="ViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BDq-8C-vi0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="llh-bg-kTx"/>
+                        <segue destination="PzC-e4-EWB" kind="relationship" relationship="viewControllers" id="aTH-ho-iDQ"/>
+                        <segue destination="XZS-24-nq7" kind="relationship" relationship="viewControllers" id="xgS-wf-7td"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvW-l7-YYk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2257" y="558"/>
+        </scene>
+        <!--View Pokemon-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="PokemonViewController" id="BYZ-38-t0r" userLabel="View Pokemon" customClass="PokemonViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldL-oB-JXR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2v-Kr-JIQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isg-qZ-DeK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="u2K-xy-FRn"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Pokemon" id="3lL-M2-43W"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Umw-LQ-4MF"/>
+                                </connections>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="N9z-a7-kiX">
+                                <rect key="frame" x="20" y="88" width="374" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="N9z-a7-kiX" secondAttribute="height" multiplier="187:28" id="AsB-qL-p6z"/>
+                                    <constraint firstAttribute="width" constant="374" id="szu-uU-cSL"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Jw0-fY-d2o"/>
+                                </connections>
+                            </searchBar>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stR-vV-7Wz">
+                                <rect key="frame" x="0.0" y="154" width="414" height="659"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gzc-xe-yjm">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="659"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="KHf-3J-Qn7"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="tPg-2j-AFN"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Gzc-xe-yjm" secondAttribute="bottom" id="R9N-VJ-kCY"/>
+                                    <constraint firstItem="Gzc-xe-yjm" firstAttribute="leading" secondItem="stR-vV-7Wz" secondAttribute="leading" id="RlD-rf-GjR"/>
+                                    <constraint firstItem="Gzc-xe-yjm" firstAttribute="top" secondItem="stR-vV-7Wz" secondAttribute="top" id="a5r-dd-y1d"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gzc-xe-yjm" secondAttribute="trailing" id="yHo-4V-h3U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g2v-Kr-JIQ" secondAttribute="trailing" id="1JI-5u-5ZG"/>
+                            <constraint firstItem="N9z-a7-kiX" firstAttribute="top" secondItem="Isg-qZ-DeK" secondAttribute="bottom" id="4lQ-Cf-75U"/>
+                            <constraint firstItem="Isg-qZ-DeK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EGH-jH-pSy"/>
+                            <constraint firstItem="N9z-a7-kiX" firstAttribute="centerX" secondItem="Isg-qZ-DeK" secondAttribute="centerX" id="FfH-pC-47s"/>
+                            <constraint firstItem="g2v-Kr-JIQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fyg-58-caK"/>
+                            <constraint firstItem="stR-vV-7Wz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GDs-OM-0bZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Isg-qZ-DeK" secondAttribute="trailing" id="ILe-Y1-Uwm"/>
+                            <constraint firstItem="ldL-oB-JXR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PUj-UV-BkV"/>
+                            <constraint firstItem="ldL-oB-JXR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UY1-dx-ay2"/>
+                            <constraint firstItem="Isg-qZ-DeK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WEH-C0-1r0"/>
+                            <constraint firstAttribute="bottom" secondItem="ldL-oB-JXR" secondAttribute="bottom" id="ZiQ-dZ-wEz"/>
+                            <constraint firstItem="stR-vV-7Wz" firstAttribute="top" secondItem="N9z-a7-kiX" secondAttribute="bottom" constant="10" id="hDc-Vh-Atg"/>
+                            <constraint firstItem="stR-vV-7Wz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="knu-nz-Ju7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ldL-oB-JXR" secondAttribute="trailing" id="sV7-pu-ekw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="stR-vV-7Wz" secondAttribute="bottom" id="sqz-7U-GM7"/>
+                            <constraint firstItem="g2v-Kr-JIQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u8Q-G0-Ifa"/>
+                            <constraint firstAttribute="bottom" secondItem="g2v-Kr-JIQ" secondAttribute="bottom" id="upd-Kd-Q6t"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pokemon" image="InactiveIconOne" selectedImage="ActiveIconOne" id="QCY-ra-PhT"/>
+                    <connections>
+                        <outlet property="searchBar" destination="N9z-a7-kiX" id="tXm-jV-vj0"/>
+                        <outlet property="tableView" destination="Gzc-xe-yjm" id="CEC-qN-aVU"/>
+                        <outlet property="viewOpacity" destination="ldL-oB-JXR" id="ZfC-Rk-uzf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-965.21739130434787" y="19.419642857142858"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ActiveIconOne" width="27" height="27"/>
+        <image name="ActiveIconThree" width="27" height="26.5"/>
+        <image name="ActiveIconTwo" width="27" height="27"/>
+        <image name="InactiveIconOne" width="27" height="27"/>
+        <image name="InactiveIconThree" width="27" height="26.5"/>
+        <image name="InactiveIconTwo" width="27" height="27"/>
+    </resources>
+</document>
