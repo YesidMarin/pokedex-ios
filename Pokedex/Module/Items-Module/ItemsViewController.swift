@@ -19,7 +19,7 @@ class ItemsViewController: UIViewController {
     }
     
     var fetchingMore = false
-    var items: [ItemsBodyDto] = [ItemsBodyDto]()
+    var items: [ItemBodyDto] = [ItemBodyDto]()
     var nextRecords = ""
     
     @IBOutlet weak var viewOpacity: UIView!
@@ -50,15 +50,8 @@ class ItemsViewController: UIViewController {
     }
     
     func initView(){
-       
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [ColorsUtil.blue.cgColor, ColorsUtil.aquaMarine.cgColor, ColorsUtil.greenLight.cgColor, ColorsUtil.green.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        gradientLayer.frame = view.frame
-        viewOpacity.layer.addSublayer(gradientLayer)
+       viewOpacity.changeBackgroundColor(backgroundColorScreens.inital)
     }
-
 }
 
 extension ItemsViewController: ItemsViewProtocol {
@@ -71,8 +64,12 @@ extension ItemsViewController: ItemsViewProtocol {
         prepareNewItemCell(items)
     }
     
-    func error() {
-        view.makeToast("Error en servicio", duration: 3.0, position: .bottom)
+    func error(error: String?) {
+        if let error = error {
+            view.makeToast(error, duration: 3.0, position: .bottom)
+        } else {
+            view.makeToast("Error en servicio", duration: 3.0, position: .bottom)
+        }
         activityIndicator.stopAnimating()
     }
 }
@@ -93,7 +90,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         return cellViewModels[indexPath.row]
     }
     
-    func prepareNewItemCell(_ moves: [ItemsBodyDto]) {
+    func prepareNewItemCell(_ moves: [ItemBodyDto]) {
         var moveCell = [ItemsViewCell]()
         if !moves.isEmpty {
             moveCell = moves.map({self.createCellViewModel(move: $0)})
@@ -101,7 +98,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func createCellViewModel(move: ItemsBodyDto) -> ItemsViewCell {
+    func createCellViewModel(move: ItemBodyDto) -> ItemsViewCell {
         return ItemsViewCell(icon: move.sprit, itemTitle: move.itemTitle, itemCost: move.cost)
     }
     
@@ -122,7 +119,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter?.showItemDetail(items[indexPath.row])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -145,5 +142,14 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.fetchingMore = false
             }
         }
+    }
+}
+
+extension ItemsViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        
+        let query = searchBar.text!.replacingOccurrences(of: " ", with: "-").lowercased()
+        presenter?.searchItem(search: query)
     }
 }

@@ -21,15 +21,34 @@ class ItemsPresenter: ItemsPresenterProtocol {
     func updateNextRecordView(url: String) {
         interator?.fetchItems(url: url)
     }
+    
+    func showItemDetail(_ item: ItemBodyDto) {
+        guard let view = view else { return }
+        router?.presentItemDetailScreen(from: view, for: item)
+    }
+    
+    func searchItem(search: String) {
+        interator?.fetchItem(search: search)
+    }
 }
 
 extension ItemsPresenter: ItemsInteractorOutputProtocol {
+    
     func getItems(items: ItemsDto) {
         view?.showItems(listItems: items)
         view?.createCell()
     }
     
     func getItemsFailed() {
-        view?.error()
+        view?.error(error: nil)
+    }
+    
+    func getItem(item: ItemBodyDto) {
+        guard let view = view else { return }
+        router?.presentItemDetailScreen(from: view, for: item)
+    }
+    
+    func getItemSearchFailed() {
+        view?.error(error: "No hay coincidencias")
     }
 }

@@ -31,4 +31,7 @@ class Tools {
         let urlPath = URLService.buildURLItemsImages() + path + ".png"
         return URL(string: urlPath)
     }
+    static func getItemImageWithoutExtension(_ path: String) -> URL?{
+        return URL(string: path)
+    }
 }

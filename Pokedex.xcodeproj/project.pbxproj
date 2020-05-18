@@ -57,6 +57,11 @@
 		DD6496012471E87F003B4F4B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6496002471E87F003B4F4B /* Styles.swift */; };
 		DD6496032471F727003B4F4B /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6496022471F726003B4F4B /* UIStackView+Extension.swift */; };
 		DD6496052471F83B003B4F4B /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6496042471F83B003B4F4B /* UILabel+Extensions.swift */; };
+		DD64960824720DBE003B4F4B /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64960724720DBD003B4F4B /* ItemDetailViewController.swift */; };
+		DD64960A24721373003B4F4B /* ItemDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64960924721373003B4F4B /* ItemDetailPresenter.swift */; };
+		DD64960C2472138E003B4F4B /* ItemDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64960B2472138E003B4F4B /* ItemDetailProtocol.swift */; };
+		DD64960E247213A5003B4F4B /* ItemDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64960D247213A5003B4F4B /* ItemDetailRouter.swift */; };
+		DD649610247213B5003B4F4B /* ItemDetailInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64960F247213B5003B4F4B /* ItemDetailInterceptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +126,11 @@
 		DD6496002471E87F003B4F4B /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		DD6496022471F726003B4F4B /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		DD6496042471F83B003B4F4B /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		DD64960724720DBD003B4F4B /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		DD64960924721373003B4F4B /* ItemDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailPresenter.swift; sourceTree = "<group>"; };
+		DD64960B2472138E003B4F4B /* ItemDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailProtocol.swift; sourceTree = "<group>"; };
+		DD64960D247213A5003B4F4B /* ItemDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailRouter.swift; sourceTree = "<group>"; };
+		DD64960F247213B5003B4F4B /* ItemDetailInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailInterceptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				DD6495D12470E245003B4F4B /* Items-Module */,
+				DD64960624720D57003B4F4B /* ItemsDetail-Module */,
 				DD6495C62470DED2003B4F4B /* Moves-Module */,
 				DD6495F32471B30D003B4F4B /* MovesDetail-Module */,
 				DD5D55442470416300697887 /* Pokemon-Module */,
@@ -311,6 +322,18 @@
 				DD6495FC2471B3BE003B4F4B /* MoveDetailInterceptor.swift */,
 			);
 			path = "MovesDetail-Module";
+			sourceTree = "<group>";
+		};
+		DD64960624720D57003B4F4B /* ItemsDetail-Module */ = {
+			isa = PBXGroup;
+			children = (
+				DD64960724720DBD003B4F4B /* ItemDetailViewController.swift */,
+				DD64960924721373003B4F4B /* ItemDetailPresenter.swift */,
+				DD64960B2472138E003B4F4B /* ItemDetailProtocol.swift */,
+				DD64960D247213A5003B4F4B /* ItemDetailRouter.swift */,
+				DD64960F247213B5003B4F4B /* ItemDetailInterceptor.swift */,
+			);
+			path = "ItemsDetail-Module";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +452,7 @@
 			files = (
 				DD6495CE2470E001003B4F4B /* MovesPresenter.swift in Sources */,
 				DD6495F92471B3A5003B4F4B /* MoveDetailProtocol.swift in Sources */,
+				DD64960A24721373003B4F4B /* ItemDetailPresenter.swift in Sources */,
 				DD6495D52470E26C003B4F4B /* ItemsPresenter.swift in Sources */,
 				DD5D552124703FC100697887 /* ViewController.swift in Sources */,
 				DD5D55572470439900697887 /* PokemonInteractor.swift in Sources */,
@@ -438,17 +462,20 @@
 				DD6495FD2471B3BE003B4F4B /* MoveDetailInterceptor.swift in Sources */,
 				DD6495D32470E25E003B4F4B /* ItemsViewController.swift in Sources */,
 				DD6495F72471B394003B4F4B /* MoveDetailPresenter.swift in Sources */,
+				DD649610247213B5003B4F4B /* ItemDetailInterceptor.swift in Sources */,
 				DD6495D72470E296003B4F4B /* ItemsProtocol.swift in Sources */,
 				DD6495EF24719491003B4F4B /* ItemsDto.swift in Sources */,
 				DD6496012471E87F003B4F4B /* Styles.swift in Sources */,
 				DD5D55552470435100697887 /* PokemonRouter.swift in Sources */,
 				DD6495CC2470DF9A003B4F4B /* MovesProtocol.swift in Sources */,
+				DD64960824720DBE003B4F4B /* ItemDetailViewController.swift in Sources */,
 				DD6495DB2470E2C0003B4F4B /* ItemsInteractor.swift in Sources */,
 				DD6495C024705ABD003B4F4B /* ColorsUtil.swift in Sources */,
 				DD5D551D24703FC100697887 /* AppDelegate.swift in Sources */,
 				DD5D5547247041A700697887 /* PokemonViewController.swift in Sources */,
 				DD6495C52470A3E4003B4F4B /* PokemonDto.swift in Sources */,
 				DD6495C324705ADF003B4F4B /* UIColor+Extension.swift in Sources */,
+				DD64960E247213A5003B4F4B /* ItemDetailRouter.swift in Sources */,
 				DD5D554E2470421300697887 /* PokemonResponse.swift in Sources */,
 				DD6496032471F727003B4F4B /* UIStackView+Extension.swift in Sources */,
 				DD6495CA2470DF7A003B4F4B /* MovesRouter.swift in Sources */,
@@ -466,6 +493,7 @@
 				DD6496052471F83B003B4F4B /* UILabel+Extensions.swift in Sources */,
 				DD5D5551247042A200697887 /* URLService.swift in Sources */,
 				DD6495D92470E2A7003B4F4B /* ItemsRouter.swift in Sources */,
+				DD64960C2472138E003B4F4B /* ItemDetailProtocol.swift in Sources */,
 				DD6495EB24718210003B4F4B /* MovesResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

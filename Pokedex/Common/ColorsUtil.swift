@@ -12,7 +12,9 @@ enum ColorsUtil{
     
     static let blue = UIColor(hexString: "6E95FD")
     static let aquaMarine = UIColor(hexString: "6FDEFA")
+    static let aquaMarineLight = UIColor(hexString: "75DEDD")
     static let greenLight = UIColor(hexString: "8DE061")
+    static let greenLightTwo = UIColor(hexString: "84E090")
     static let green = UIColor(hexString: "51E85E")
     static let grayLight = UIColor(hexString: "E4E4E4")
     

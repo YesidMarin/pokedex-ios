@@ -31,5 +31,14 @@ class ItemsRouter: ItemsRouterProtocol {
         return view
     }
     
+    func presentItemDetailScreen(from view: ItemsViewProtocol, for item: ItemBodyDto) {
+        let moveDetailVC = ItemDetailRouter.createDetailRouterModule(with: item)
+        
+        guard let viewVC = view as? UIViewController else {
+            fatalError("Invalid View Protocol type")
+        }
+        
+        viewVC.navigationController?.pushViewController(moveDetailVC, animated: true)
+    }
     
 }

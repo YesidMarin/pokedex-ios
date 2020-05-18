@@ -10,12 +10,13 @@ import Foundation
 
 struct ItemsDto {
     var next: String
-    var items: [ItemsBodyDto]
+    var items: [ItemBodyDto]
 }
 
-struct ItemsBodyDto {
+struct ItemBodyDto {
     var itemTitle: String
     var cost: Int
     var sprit: String
+    var effect: String
 }
 

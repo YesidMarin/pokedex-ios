@@ -20,7 +20,12 @@ struct ItemsResult: Decodable {
 
 struct ItemsDescription: Decodable {
     let cost: Int
+    let effect_entries: [ItemEffectEntries]
     let sprites: ItemSprite
+}
+
+struct ItemEffectEntries: Decodable {
+    let effect: String
 }
 
 struct ItemSprite: Decodable {

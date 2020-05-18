@@ -50,15 +50,8 @@ class MovesViewController: UIViewController {
     }
     
      func initView(){
-        
-         let gradientLayer = CAGradientLayer()
-         gradientLayer.colors = [ColorsUtil.blue.cgColor, ColorsUtil.aquaMarine.cgColor, ColorsUtil.greenLight.cgColor, ColorsUtil.green.cgColor]
-         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-         gradientLayer.frame = view.frame
-         viewOpacity.layer.addSublayer(gradientLayer)
+        viewOpacity.changeBackgroundColor(backgroundColorScreens.inital)
      }
-    
 }
 
 extension MovesViewController: MovesViewProtocol {

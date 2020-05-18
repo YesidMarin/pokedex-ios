@@ -17,6 +17,8 @@ protocol ItemsPresenterProtocol: class {
     // VIEW -> PRESENTER
     func updateView()
     func updateNextRecordView(url: String)
+    func searchItem(search: String)
+    func showItemDetail(_ item: ItemBodyDto)
 }
 
 protocol ItemsViewProtocol: class {
@@ -24,14 +26,16 @@ protocol ItemsViewProtocol: class {
     // PRESENTER -> VIEW
     func showItems(listItems: ItemsDto)
     func createCell()
-    func error()
+    func error(error: String?)
 }
 
 protocol ItemsInteractorOutputProtocol: class {
     
     // INTERACTOR -> PRESENTER
     func getItems(items: ItemsDto)
+    func getItem(item: ItemBodyDto)
     func getItemsFailed()
+    func getItemSearchFailed()
 }
 
 protocol ItemsInteractorInputProtocol: class {
@@ -41,11 +45,12 @@ protocol ItemsInteractorInputProtocol: class {
     // PRESENTER -> INTERACTOR
     func fetchItems()
     func fetchItems(url: String)
+    func fetchItem(search: String)
 }
 
 protocol ItemsRouterProtocol: class {
     // PRESENTER -> ROUTER
     static func createModule() -> UIViewController
-    
+    func presentItemDetailScreen(from view: ItemsViewProtocol, for item: ItemBodyDto)
 }
 

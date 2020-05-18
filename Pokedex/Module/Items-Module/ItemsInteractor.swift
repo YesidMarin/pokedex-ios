@@ -36,9 +36,21 @@ class ItemsInteractor: ItemsInteractorInputProtocol {
         }
     }
     
+    func fetchItem(search: String) {
+        let url = URLService.buildURLItemsDescription(id: search)
+        AF.request(url).responseDecodable { (dataResponse: AFDataResponse<ItemsDescription>) in
+            switch dataResponse.result {
+                case .failure(_):
+                    self.presenter?.getItemSearchFailed()
+                case .success(let data):
+                    self.presenter?.getItem(item: ItemBodyDto(itemTitle: search, cost: data.cost, sprit: data.sprites.default, effect: data.effect_entries[0].effect))
+            }
+        }
+    }
+    
     private func loopDetailItems(response: ItemsResponse) {
         
-        var itemsBody: [ItemsBodyDto] = [ItemsBodyDto]()
+        var itemsBody: [ItemBodyDto] = [ItemBodyDto]()
         var name = ""
         let dispatchQueue = DispatchQueue(label: "dispatchQueue", qos: .background)
         let semaphore = DispatchSemaphore(value: 0)
@@ -52,7 +64,7 @@ class ItemsInteractor: ItemsInteractorInputProtocol {
                         case .failure(_):
                             self.presenter?.getItemsFailed()
                         case .success(let data):
-                            itemsBody.append(ItemsBodyDto(itemTitle: name, cost: data.cost, sprit: data.sprites.default))
+                            itemsBody.append(ItemBodyDto(itemTitle: name, cost: data.cost, sprit: data.sprites.default, effect: data.effect_entries[0].effect))
                             semaphore.signal()
                     }
                 }

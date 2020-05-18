@@ -20,4 +20,14 @@ extension UIView {
         layer.addSublayer(gradientLayer)
     }
     
+    func changeBackgroundColor(_ backgroundColorScreens: backgroundColorScreens) {
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = backgroundColorScreens.backgoundColor
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.frame = frame
+        layer.addSublayer(gradientLayer)
+    }
+    
 }

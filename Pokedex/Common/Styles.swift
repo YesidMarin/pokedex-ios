@@ -74,5 +74,16 @@ enum slotColor: String {
             case .water: return ColorsUtil.waterTwo
         }
     }
+}
+
+enum backgroundColorScreens {
+    case inital
+    case item
     
+    var backgoundColor: [CGColor] {
+        switch self {
+        case .inital: return [ColorsUtil.blue.cgColor, ColorsUtil.aquaMarine.cgColor, ColorsUtil.greenLight.cgColor, ColorsUtil.green.cgColor]
+        case .item: return [ColorsUtil.aquaMarineLight.cgColor, ColorsUtil.greenLightTwo.cgColor]
+        }
+    }
 }
