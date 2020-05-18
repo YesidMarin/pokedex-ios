@@ -17,6 +17,8 @@ protocol MovesPresenterProtocol: class {
     // VIEW -> PRESENTER
     func updateView()
     func updateNextRecordView(url: String)
+    func searchMove(search: String)
+    func showMoveDetail(_ move: MoveBodyDto)
 }
 
 protocol MovesViewProtocol: class {
@@ -24,14 +26,16 @@ protocol MovesViewProtocol: class {
     // PRESENTER -> VIEW
     func showMoves(listMoves: MovesDto)
     func createCell()
-    func error()
+    func error(error: String?)
 }
 
 protocol MovesInteractorOutputProtocol: class {
     
     // INTERACTOR -> PRESENTER
     func getMoves(moves: MovesDto)
+    func getMove(move: MoveBodyDto)
     func getMovesFailed()
+    func getMoveSearchFailed()
     
 }
 
@@ -42,11 +46,12 @@ protocol MovesInteractorInputProtocol: class {
     // PRESENTER -> INTERACTOR
     func fetchMoves()
     func fetchMoves(url: String)
+    func fetchMove(search: String)
 }
 
 protocol MovesRouterProtocol: class {
     
     // PRESENTER -> ROUTER
     static func createModule() -> UIViewController
-    
+    func presentMoveDetailScreen(from view: MovesViewProtocol, for move: MoveBodyDto)
 }

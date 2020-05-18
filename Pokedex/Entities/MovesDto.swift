@@ -16,5 +16,9 @@ struct MovesDto {
 struct MoveBodyDto {
     var moveTitle: String
     var moveTypeSlot: String
-    var moveUrl: String
+    let accuracy: Int
+    let effect_chance: Int
+    let effect: String
+    let power: Int
+    let pp: Int
 }

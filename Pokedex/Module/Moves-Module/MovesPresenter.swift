@@ -21,6 +21,15 @@ class MovesPresenter: MovesPresenterProtocol {
     func updateNextRecordView(url: String) {
         interator?.fetchMoves(url: url)
     }
+    
+    func showMoveDetail(_ move: MoveBodyDto) {
+        guard let view = view else { return }
+        router?.presentMoveDetailScreen(from: view, for: move)
+    }
+    
+    func searchMove(search: String) {
+        interator?.fetchMove(search: search)
+    }
 }
 
 extension MovesPresenter: MovesInteractorOutputProtocol {
@@ -30,7 +39,16 @@ extension MovesPresenter: MovesInteractorOutputProtocol {
         view?.createCell()
     }
     
+    func getMove(move: MoveBodyDto) {
+        guard let view = view else { return }
+        router?.presentMoveDetailScreen(from: view, for: move)
+    }
+    
     func getMovesFailed() {
-        view?.error()
+        view?.error(error: nil)
+    }
+    
+    func getMoveSearchFailed() {
+        view?.error(error: "No hay coincidencias")
     }
 }

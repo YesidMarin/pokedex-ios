@@ -30,4 +30,14 @@ class MovesRouter: MovesRouterProtocol{
         
         return view
     }
+    
+    func presentMoveDetailScreen(from view: MovesViewProtocol, for move: MoveBodyDto) {
+        let moveDetailVC = MoveDetailRouter.createDetailRouterModule(with: move)
+        
+        guard let viewVC = view as? UIViewController else {
+            fatalError("Invalid View Protocol type")
+        }
+        
+        viewVC.navigationController?.pushViewController(moveDetailVC, animated: true)
+    }
 }

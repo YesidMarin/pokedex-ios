@@ -19,7 +19,7 @@ class ViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.viewControllers = [PokemonTabBar,MovesTabBar,ItemsTabBar]
+        self.viewControllers = [ PokemonTabBar,MovesTabBar,ItemsTabBar]
     }
 
     lazy public var PokemonTabBar = setTabBarController(viewController: PokemonRouter.createModule(), title: "Pokemon", image: "InactiveIconOne", selectedImage: "ActiveIconOne")
@@ -31,7 +31,7 @@ class ViewController: UITabBarController {
 }
 
 extension UITabBarController {
-    func setTabBarController(viewController: UIViewController, title: String, image: String, selectedImage: String) -> UIViewController {
+    func setTabBarController(viewController: UIViewController, title: String, image: String, selectedImage: String) -> UINavigationController {
         
         let image = UIImage(named: image)
         let selectedImage = UIImage(named: selectedImage)
@@ -39,7 +39,7 @@ extension UITabBarController {
         let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         viewController.tabBarItem = tabBarItem
         
-        return viewController
+        return UINavigationController(rootViewController: viewController)
     }
 }
 

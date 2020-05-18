@@ -35,6 +35,7 @@ class ItemsViewController: UIViewController {
         view.addSubview(activityIndicator)
         activityIndicator.center = view.center
         
+        self.navigationItem.title = "Items"
         presenter?.updateView()
         tableView.register(UINib(nibName: "ItemsTableViewCell", bundle: nil), forCellReuseIdentifier: "itemsViewCell")
         

@@ -19,7 +19,16 @@ struct MovesResult: Decodable {
 }
 
 struct MoveDescription: Decodable {
+    let accuracy: Int?
+    let effect_chance: Int?
+    let effect_entries: [MoveEffectEntries]
+    let power: Int?
+    let pp: Int?
     let type: MoveDescriptionType
+}
+
+struct MoveEffectEntries: Decodable {
+    let effect: String
 }
 
 struct MoveDescriptionType: Decodable {

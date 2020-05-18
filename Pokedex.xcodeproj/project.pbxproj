@@ -48,6 +48,15 @@
 		DD6495ED24719481003B4F4B /* ItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495EC24719481003B4F4B /* ItemsResponse.swift */; };
 		DD6495EF24719491003B4F4B /* ItemsDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495EE24719491003B4F4B /* ItemsDto.swift */; };
 		DD6495F22471AE65003B4F4B /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = DD6495F12471AE65003B4F4B /* Toast */; };
+		DD6495F52471B353003B4F4B /* MoveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495F42471B353003B4F4B /* MoveDetailViewController.swift */; };
+		DD6495F72471B394003B4F4B /* MoveDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495F62471B394003B4F4B /* MoveDetailPresenter.swift */; };
+		DD6495F92471B3A5003B4F4B /* MoveDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495F82471B3A5003B4F4B /* MoveDetailProtocol.swift */; };
+		DD6495FB2471B3B3003B4F4B /* MoveDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495FA2471B3B3003B4F4B /* MoveDetailRouter.swift */; };
+		DD6495FD2471B3BE003B4F4B /* MoveDetailInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495FC2471B3BE003B4F4B /* MoveDetailInterceptor.swift */; };
+		DD6495FF2471E7D7003B4F4B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6495FE2471E7D7003B4F4B /* UIView+Extensions.swift */; };
+		DD6496012471E87F003B4F4B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6496002471E87F003B4F4B /* Styles.swift */; };
+		DD6496032471F727003B4F4B /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6496022471F726003B4F4B /* UIStackView+Extension.swift */; };
+		DD6496052471F83B003B4F4B /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6496042471F83B003B4F4B /* UILabel+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +112,15 @@
 		DD6495EA24718210003B4F4B /* MovesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesResponse.swift; sourceTree = "<group>"; };
 		DD6495EC24719481003B4F4B /* ItemsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsResponse.swift; sourceTree = "<group>"; };
 		DD6495EE24719491003B4F4B /* ItemsDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDto.swift; sourceTree = "<group>"; };
+		DD6495F42471B353003B4F4B /* MoveDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDetailViewController.swift; sourceTree = "<group>"; };
+		DD6495F62471B394003B4F4B /* MoveDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDetailPresenter.swift; sourceTree = "<group>"; };
+		DD6495F82471B3A5003B4F4B /* MoveDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDetailProtocol.swift; sourceTree = "<group>"; };
+		DD6495FA2471B3B3003B4F4B /* MoveDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDetailRouter.swift; sourceTree = "<group>"; };
+		DD6495FC2471B3BE003B4F4B /* MoveDetailInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDetailInterceptor.swift; sourceTree = "<group>"; };
+		DD6495FE2471E7D7003B4F4B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		DD6496002471E87F003B4F4B /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		DD6496022471F726003B4F4B /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		DD6496042471F83B003B4F4B /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +207,7 @@
 			children = (
 				DD6495D12470E245003B4F4B /* Items-Module */,
 				DD6495C62470DED2003B4F4B /* Moves-Module */,
+				DD6495F32471B30D003B4F4B /* MovesDetail-Module */,
 				DD5D55442470416300697887 /* Pokemon-Module */,
 			);
 			path = Module;
@@ -213,6 +232,7 @@
 				DD5D5550247042A200697887 /* URLService.swift */,
 				DD5D55522470431700697887 /* Tools.swift */,
 				DD6495BF24705ABD003B4F4B /* ColorsUtil.swift */,
+				DD6496002471E87F003B4F4B /* Styles.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -230,6 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				DD6495C224705ADF003B4F4B /* UIColor+Extension.swift */,
+				DD6495FE2471E7D7003B4F4B /* UIView+Extensions.swift */,
+				DD6496022471F726003B4F4B /* UIStackView+Extension.swift */,
+				DD6496042471F83B003B4F4B /* UILabel+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +299,18 @@
 				DD6495E524717029003B4F4B /* ItemsTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DD6495F32471B30D003B4F4B /* MovesDetail-Module */ = {
+			isa = PBXGroup;
+			children = (
+				DD6495F42471B353003B4F4B /* MoveDetailViewController.swift */,
+				DD6495F62471B394003B4F4B /* MoveDetailPresenter.swift */,
+				DD6495F82471B3A5003B4F4B /* MoveDetailProtocol.swift */,
+				DD6495FA2471B3B3003B4F4B /* MoveDetailRouter.swift */,
+				DD6495FC2471B3BE003B4F4B /* MoveDetailInterceptor.swift */,
+			);
+			path = "MovesDetail-Module";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,14 +428,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD6495CE2470E001003B4F4B /* MovesPresenter.swift in Sources */,
+				DD6495F92471B3A5003B4F4B /* MoveDetailProtocol.swift in Sources */,
 				DD6495D52470E26C003B4F4B /* ItemsPresenter.swift in Sources */,
 				DD5D552124703FC100697887 /* ViewController.swift in Sources */,
 				DD5D55572470439900697887 /* PokemonInteractor.swift in Sources */,
 				DD5D5549247041BD00697887 /* PokemonPresenter.swift in Sources */,
 				DD6495ED24719481003B4F4B /* ItemsResponse.swift in Sources */,
+				DD6495FF2471E7D7003B4F4B /* UIView+Extensions.swift in Sources */,
+				DD6495FD2471B3BE003B4F4B /* MoveDetailInterceptor.swift in Sources */,
 				DD6495D32470E25E003B4F4B /* ItemsViewController.swift in Sources */,
+				DD6495F72471B394003B4F4B /* MoveDetailPresenter.swift in Sources */,
 				DD6495D72470E296003B4F4B /* ItemsProtocol.swift in Sources */,
 				DD6495EF24719491003B4F4B /* ItemsDto.swift in Sources */,
+				DD6496012471E87F003B4F4B /* Styles.swift in Sources */,
 				DD5D55552470435100697887 /* PokemonRouter.swift in Sources */,
 				DD6495CC2470DF9A003B4F4B /* MovesProtocol.swift in Sources */,
 				DD6495DB2470E2C0003B4F4B /* ItemsInteractor.swift in Sources */,
@@ -410,16 +450,20 @@
 				DD6495C52470A3E4003B4F4B /* PokemonDto.swift in Sources */,
 				DD6495C324705ADF003B4F4B /* UIColor+Extension.swift in Sources */,
 				DD5D554E2470421300697887 /* PokemonResponse.swift in Sources */,
+				DD6496032471F727003B4F4B /* UIStackView+Extension.swift in Sources */,
 				DD6495CA2470DF7A003B4F4B /* MovesRouter.swift in Sources */,
+				DD6495FB2471B3B3003B4F4B /* MoveDetailRouter.swift in Sources */,
 				DD6495D02470E05E003B4F4B /* MovesInteractor.swift in Sources */,
 				DD6495E924717CE2003B4F4B /* MovesDto.swift in Sources */,
 				DD6495DF24716BFC003B4F4B /* MovesTableViewCell.swift in Sources */,
+				DD6495F52471B353003B4F4B /* MoveDetailViewController.swift in Sources */,
 				DD5D551F24703FC100697887 /* SceneDelegate.swift in Sources */,
 				DD5D55532470431700697887 /* Tools.swift in Sources */,
 				DD5D555B2470444A00697887 /* PokemonTableViewCell.swift in Sources */,
 				DD6495C82470DF0A003B4F4B /* MovesViewController.swift in Sources */,
 				DD6495E624717029003B4F4B /* ItemsTableViewCell.swift in Sources */,
 				DD5D554B247041D700697887 /* PokemonProtocol.swift in Sources */,
+				DD6496052471F83B003B4F4B /* UILabel+Extensions.swift in Sources */,
 				DD5D5551247042A200697887 /* URLService.swift in Sources */,
 				DD6495D92470E2A7003B4F4B /* ItemsRouter.swift in Sources */,
 				DD6495EB24718210003B4F4B /* MovesResponse.swift in Sources */,

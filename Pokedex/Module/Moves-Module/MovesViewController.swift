@@ -35,6 +35,7 @@ class MovesViewController: UIViewController {
         view.addSubview(activityIndicator)
         activityIndicator.center = view.center
         
+        self.navigationItem.title = "Moves"
         presenter?.updateView()
         tableView.register(UINib(nibName: "MovesTableViewCell", bundle: nil), forCellReuseIdentifier: "movesViewCell")
         
@@ -71,8 +72,13 @@ extension MovesViewController: MovesViewProtocol {
         prepareNewMoveCell(moves)
     }
     
-    func error() {
-        view.makeToast("Error en servicio", duration: 3.0, position: .bottom)
+    func error(error: String?) {
+        if let error = error {
+            view.makeToast(error, duration: 3.0, position: .bottom)
+        } else {
+            view.makeToast("Error en servicio", duration: 3.0, position: .bottom)
+        }
+        
         activityIndicator.stopAnimating()
     }
 }
@@ -80,7 +86,6 @@ extension MovesViewController: MovesViewProtocol {
 struct MovesViewCell {
     let moveTitle: String
     let moveSlot: String
-    let moveUrl: String
 }
 
 extension MovesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -102,7 +107,7 @@ extension MovesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func createCellViewModel(move: MoveBodyDto) -> MovesViewCell {
-        return MovesViewCell(moveTitle: move.moveTitle, moveSlot: move.moveTypeSlot, moveUrl: move.moveUrl)
+        return MovesViewCell(moveTitle: move.moveTitle.replacingOccurrences(of: "-", with: " "), moveSlot: move.moveTypeSlot)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,7 +127,7 @@ extension MovesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter?.showMoveDetail(moves[indexPath.row])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -146,5 +151,13 @@ extension MovesViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+}
+
+extension MovesViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        
+        let query = searchBar.text!.replacingOccurrences(of: " ", with: "-").lowercased()
+        presenter?.searchMove(search: query)
+    }
 }

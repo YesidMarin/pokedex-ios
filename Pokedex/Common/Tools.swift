@@ -18,6 +18,8 @@ class Tools {
         navigationAppearance.shadowImage = UIImage()
         navigationAppearance.isTranslucent = true
         navigationAppearance.backgroundColor = .clear
+        navigationAppearance.barTintColor = .white
+        navigationAppearance.tintColor = .white
     }
     
     static func getPosterImage(_ path: String) -> URL?{

@@ -29,9 +29,22 @@ class MovesInteractor: MovesInteractorInputProtocol{
         AF.request(url).responseDecodable { (dataResponse: AFDataResponse<MovesResponse>) in
             switch dataResponse.result {
                 case .failure(_):
-                    self.presenter?.getMovesFailed()
+                    self.presenter?.getMoveSearchFailed()
                 case .success(let value):
                     self.loopDetailMoves(response: value)
+            }
+        }
+    }
+    
+    func fetchMove(search: String) {
+        let url = URLService.buildURLMovesDescription(id: search)
+        AF.request(url).responseDecodable { (dataResponse: AFDataResponse<MoveDescription>) in
+            switch dataResponse.result {
+            case .failure(_):
+                self.presenter?.getMoveSearchFailed()
+            case .success(let value):
+                
+                self.presenter?.getMove(move: MoveBodyDto(moveTitle: search, moveTypeSlot: value.type.name, accuracy: value.accuracy ?? 0, effect_chance: value.effect_chance ?? 0, effect: value.effect_entries[0].effect, power: value.power ?? 0, pp: value.pp ?? 0))
             }
         }
     }
@@ -52,7 +65,7 @@ class MovesInteractor: MovesInteractorInputProtocol{
                     case .failure(_):
                         self.presenter?.getMovesFailed()
                     case .success(let value):
-                        moveBody.append(MoveBodyDto(moveTitle: name, moveTypeSlot: value.type.name, moveUrl: data.url))
+                        moveBody.append(MoveBodyDto(moveTitle: name, moveTypeSlot: value.type.name, accuracy: value.accuracy ?? 0, effect_chance: value.effect_chance ?? 0, effect: value.effect_entries[0].effect, power: value.power ?? 0, pp: value.pp ?? 0))
                         semaphore.signal()
                     }
                 }

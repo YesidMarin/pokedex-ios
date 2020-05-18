@@ -34,6 +34,8 @@ class PokemonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        
+        self.navigationItem.title = "Pokemon"
         view.addSubview(activityIndicator)
         activityIndicator.center = view.center
         
@@ -60,8 +62,6 @@ class PokemonViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradientLayer.frame = view.frame
         viewOpacity.layer.addSublayer(gradientLayer)
-        
-        
     }
 }
 
