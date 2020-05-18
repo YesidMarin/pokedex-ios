@@ -40,11 +40,13 @@ class ItemsViewController: UIViewController {
         tableView.register(UINib(nibName: "ItemsTableViewCell", bundle: nil), forCellReuseIdentifier: "itemsViewCell")
         
         activityIndicator.startAnimating()
+        view.isUserInteractionEnabled = false
         
         reloadTableViewModel = {() in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.activityIndicator.stopAnimating()
+                self.view.isUserInteractionEnabled = true
             }
         }
     }
@@ -137,6 +139,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         if !nextRecords.isEmpty {
             fetchingMore = true
             activityIndicator.startAnimating()
+            view.isUserInteractionEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.presenter?.updateNextRecordView(url: self.nextRecords)
                 self.fetchingMore = false

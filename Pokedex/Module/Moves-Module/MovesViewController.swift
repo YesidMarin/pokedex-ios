@@ -40,11 +40,13 @@ class MovesViewController: UIViewController {
         tableView.register(UINib(nibName: "MovesTableViewCell", bundle: nil), forCellReuseIdentifier: "movesViewCell")
         
         activityIndicator.startAnimating()
+        view.isUserInteractionEnabled = false
         
         reloadTableViewModel = {() in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.activityIndicator.stopAnimating()
+                self.view.isUserInteractionEnabled = true
             }
         }
     }
@@ -138,6 +140,7 @@ extension MovesViewController: UITableViewDelegate, UITableViewDataSource {
         if !nextRecords.isEmpty {
             fetchingMore = true
             activityIndicator.startAnimating()
+            view.isUserInteractionEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.presenter?.updateNextRecordView(url: self.nextRecords)
                 self.fetchingMore = false
