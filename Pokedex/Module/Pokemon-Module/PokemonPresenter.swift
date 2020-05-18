@@ -26,6 +26,11 @@ class PokemonPresenter: PokemonPresenterProtocol {
         interator?.fetchPokemon(query: search)
     }
     
+    func showPokemonDetail(_ pokemon: PokemonBodyDto) {
+        guard let view = view else { return }
+        router?.presentDetailPokemonScreen(from: view, for: pokemon)
+    }
+    
 }
 
 extension PokemonPresenter: PokemonInteractorOutputProtocol {
@@ -36,6 +41,16 @@ extension PokemonPresenter: PokemonInteractorOutputProtocol {
     }
     
     func getPokemonsFailed() {
-        view?.error()
+        view?.error(error: nil)
     }
+    
+    func getPokemon(pokemon: PokemonBodyDto) {
+        guard let view = view else { return }
+        router?.presentDetailPokemonScreen(from: view, for: pokemon)
+    }
+    
+    func getPokemonSearchFailed() {
+        view?.error(error: "No hay coincidencias")
+    }
+    
 }

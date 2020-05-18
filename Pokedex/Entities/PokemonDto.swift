@@ -14,12 +14,25 @@ struct PokemonDto {
 }
 
 struct PokemonBodyDto {
+    var id: String
     var name: String
     var url: String
-    var description: [DescriptionPokemonDto]
+    var description: [PokemonDescriptionDto]
+    let height: String
+    let weight: String
+    let stats: [PokemonStatsDto]
 }
 
-struct DescriptionPokemonDto {
+struct PokemonDescriptionDto {
     var slot: Int
     var nameSlot: String
+}
+
+struct PokemonStatsDto {
+    var name: String
+    var base_stat: String
+}
+
+struct PokemonSpecieDto {
+    var text_entries: String
 }

@@ -32,7 +32,13 @@ class PokemonRouter: PokemonRouterProtocol {
         return view
     }
     
-    func presentDetailPokemonScreen(from view: PokemonViewProtocol, for pokemon: FirstStepResults) {
+    func presentDetailPokemonScreen(from view: PokemonViewProtocol, for pokemon: PokemonBodyDto) {
+        let moveDetailVC = PokemonDetailRouter.createDetailRouterModule(with: pokemon)
         
+        guard let viewVC = view as? UIViewController else {
+            fatalError("Invalid View Protocol type")
+        }
+        
+        viewVC.navigationController?.pushViewController(moveDetailVC, animated: true)
     }
 }

@@ -70,20 +70,23 @@ extension PokemonViewController: PokemonViewProtocol {
         prepareNewPokemonCell(pokemons)
     }
     
-    func error() {
-        view.makeToast("Error en servicio", duration: 3.0, position: .bottom)
+    func error(error: String?) {
+        if let error = error {
+            view.makeToast(error, duration: 3.0, position: .bottom)
+        } else {
+            view.makeToast("Error en servicio", duration: 3.0, position: .bottom)
+        }
         activityIndicator.stopAnimating()
     }
 }
 
 struct PokemonViewCell {
+    let pokemonId: String
     let pokemonTitle: String
     let pokemonNumber: String
     let pokemonUrl: String
     let pokemonFirstSlot: String
     let pokemonSecondSlot: String
-    let pokemonThreeSlot: String
-    let pokemonFourSlot: String
 }
 
 extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
@@ -109,25 +112,16 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
     
     func createCellViewModel(pokemon: PokemonBodyDto, number: Int) -> PokemonViewCell {
         let currentNumber = "#\(String(format: "%03d", number))"
-        var slotOne = "None"
-        var slotTwo = "None"
-        var slotThree = "None"
-        var slotFour = "None"
+        var slotOne = ""
+        var slotTwo = ""
         
+        let filterSlotOne = pokemon.description.filter({$0.slot == 1}).first
+        let filterSlotTwo = pokemon.description.filter({$0.slot == 2}).first
+        slotOne = filterSlotOne?.nameSlot ?? "None"
+        slotTwo = filterSlotTwo?.nameSlot ?? "None"
+       
         
-        pokemon.description.forEach { description in
-            if description.slot == 1 {
-                slotOne = description.nameSlot
-            } else if description.slot == 2 {
-                slotTwo = description.nameSlot
-            } else if description.slot == 3 {
-                slotThree = description.nameSlot
-            } else if description.slot == 4 {
-                slotFour = description.nameSlot
-            }
-        }
-        
-        return PokemonViewCell(pokemonTitle: pokemon.name, pokemonNumber: currentNumber, pokemonUrl: pokemon.url,pokemonFirstSlot: slotOne, pokemonSecondSlot: slotTwo, pokemonThreeSlot: slotThree, pokemonFourSlot: slotFour)
+        return PokemonViewCell(pokemonId: pokemon.id, pokemonTitle: pokemon.name, pokemonNumber: currentNumber, pokemonUrl: pokemon.url,pokemonFirstSlot: slotOne, pokemonSecondSlot: slotTwo)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,7 +141,7 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter?.showPokemonDetail(pokemons[indexPath.row])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -176,15 +170,7 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
 extension PokemonViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-        
-        let query = searchBar.text!.lowercased()
-        if query.isEmpty {
-            if pokemons.count > 0 {
-                prepareNewPokemonCell(pokemons)
-            }
-        } else {
-            pokemons.removeAll()
-            presenter?.searchPokemon(search: query)
-        }
+        let query = searchBar.text!.replacingOccurrences(of: " ", with: "-").lowercased()
+        presenter?.searchPokemon(search: query)
     }
 }

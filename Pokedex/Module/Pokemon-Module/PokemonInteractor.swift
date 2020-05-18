@@ -40,13 +40,19 @@ class PokemonInteractor: PokemonInteractorInputProtocol {
     
     func fetchPokemon(query: String) {
         
-        let url = URLService.buildURLSearchPokemon(query: query)
+        var pokemonDescription: [PokemonDescriptionDto] = [PokemonDescriptionDto]()
+        
+        let url = URLService.buildURLPokemonsDescription(id: query)
         AF.request(url).responseDecodable { (dataResponse: AFDataResponse<DetailPokemon>) in
             switch dataResponse.result {
-                case .failure(_):
-                    self.presenter?.getPokemonsFailed()
-                case .success(let value):
-                    print(value)
+            case .failure(_):
+                self.presenter?.getPokemonSearchFailed()
+            case .success(let value):
+                let types = value.types.map({PokemonDescriptionDto(slot: $0.slot, nameSlot: $0.type.name)})
+                pokemonDescription.append(contentsOf: types)
+                let stats = value.stats.map({PokemonStatsDto(name: $0.stat.name, base_stat: "\($0.base_stat)")})
+                let body = PokemonBodyDto(id: "\(value.id)",name: query, url: "", description: pokemonDescription, height: "\(value.height)", weight: "\(value.weight)", stats: stats)
+                self.presenter?.getPokemon(pokemon: body)
             }
         }
     }
@@ -56,23 +62,24 @@ class PokemonInteractor: PokemonInteractorInputProtocol {
         var pokemonBody: [PokemonBodyDto] = [PokemonBodyDto]()
         
         var name = ""
-        var descriptionPokemon: [DescriptionPokemonDto] = [DescriptionPokemonDto]()
         let dispatchQueue = DispatchQueue(label: "dispatchQueue", qos: .background)
         let semaphore = DispatchSemaphore(value: 0)
         
         dispatchQueue.async {
             for data in response.results {
                 name = data.name
+                var pokemonDescription: [PokemonDescriptionDto] = [PokemonDescriptionDto]()
+                
                 let url = URLService.buildURLPokemonsDescription(id: data.name)
                 AF.request(url).responseDecodable { (dataResponse: AFDataResponse<DetailPokemon>) in
                     switch dataResponse.result {
                     case .failure(_):
                         self.presenter?.getPokemonsFailed()
                     case .success(let value):
-                        let types = value.types.map({DescriptionPokemonDto(slot: $0.slot, nameSlot: $0.type.name)})
-                        descriptionPokemon.append(contentsOf: types)
-                        
-                        let body = PokemonBodyDto(name: name, url: data.url, description: descriptionPokemon)
+                        let types = value.types.map({PokemonDescriptionDto(slot: $0.slot, nameSlot: $0.type.name)})
+                        pokemonDescription.append(contentsOf: types)
+                        let stats = value.stats.map({PokemonStatsDto(name: $0.stat.name, base_stat: "\($0.base_stat)")})
+                        let body = PokemonBodyDto(id: "\(value.id)",name: name, url: data.url, description: pokemonDescription, height: "\(value.height)", weight: "\(value.weight)", stats: stats)
                         pokemonBody.append(body)
                         semaphore.signal()
                     }

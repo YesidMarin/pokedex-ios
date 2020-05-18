@@ -23,14 +23,11 @@ class PokemonTableViewCell: UITableViewCell {
     
     var pokemonView: PokemonViewCell? {
         didSet {
-            iconView(path: self.pokemonView?.pokemonTitle)
+            iconView(path: self.pokemonView?.pokemonId)
             pokemonTitle.text = self.pokemonView?.pokemonTitle.capitalized
             pokemonNumber.text = self.pokemonView?.pokemonNumber
             firstSlot.image = UIImage(named: self.pokemonView?.pokemonFirstSlot.capitalized ?? "")
             secondSlot.image = UIImage(named: self.pokemonView?.pokemonSecondSlot.capitalized ?? "")
-            threeSlot.image = UIImage(named: self.pokemonView?.pokemonThreeSlot.capitalized ?? "")
-            fourSlot.image = UIImage(named: self.pokemonView?.pokemonFourSlot.capitalized ?? "")
-
         }
     }
     

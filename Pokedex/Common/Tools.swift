@@ -23,7 +23,7 @@ class Tools {
     }
     
     static func getPosterImage(_ path: String) -> URL?{
-        let urlPath = URLService.buildURLImages() + path + ".jpg"
+        let urlPath = URLService.buildURLImages() + path + ".png"
         return URL(string: urlPath)
     }
     

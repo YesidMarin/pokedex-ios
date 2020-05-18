@@ -19,6 +19,7 @@ protocol PokemonPresenterProtocol: class {
     func updateView()
     func updateNextRecordView(url: String)
     func searchPokemon(search: String)
+    func showPokemonDetail(_ pokemon: PokemonBodyDto)
 }
 
 protocol PokemonViewProtocol: class {
@@ -26,14 +27,16 @@ protocol PokemonViewProtocol: class {
     // PRESENTER -> VIEW
     func showPokemons(listPokemons: PokemonDto)
     func createCell()
-    func error()
+    func error(error: String?)
 }
 
 protocol PokemonInteractorOutputProtocol: class {
     
     // INTERACTOR -> PRESENTER
     func getPokemons(pokemons: PokemonDto)
+    func getPokemon(pokemon: PokemonBodyDto)
     func getPokemonsFailed()
+    func getPokemonSearchFailed()
 }
 
 protocol PokemonInteractorInputProtocol: class {
@@ -50,5 +53,5 @@ protocol PokemonRouterProtocol: class {
     
     // PRESENTER -> ROUTER
     static func createModule() -> UIViewController
-    func presentDetailPokemonScreen(from view: PokemonViewProtocol, for pokemon: FirstStepResults)
+    func presentDetailPokemonScreen(from view: PokemonViewProtocol, for pokemon: PokemonBodyDto)
 }

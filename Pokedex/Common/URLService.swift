@@ -11,7 +11,7 @@ import Foundation
 class URLService {
     
     private static let url_service = "https://pokeapi.co/api/v2/"
-    private static let url_images = "https://img.pokemondb.net/artwork/"
+    private static let url_images = "https://pokeres.bastionbot.org/images/pokemon/"
     private static let url_items_images = "https://img.pokemondb.net/sprites/items/"
     
     // MARK: Pokemons
@@ -23,8 +23,8 @@ class URLService {
         return "\(buildURLPokemons())/\(id)"
     }
     
-    static func buildURLSearchPokemon(query: String) -> String {
-        return "\(buildURLPokemons())/\(query)"
+    static func buildURLPokemonSpecies(id: String) -> String {
+        return url_service + "pokemon-species/\(id)"
     }
     
     // MARK: Moves

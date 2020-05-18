@@ -19,7 +19,11 @@ struct FirstStepResults: Decodable {
 }
 
 struct DetailPokemon: Decodable {
+    let id: Int
     let types: [TypesPokemon]
+    let height: Int
+    let weight: Int
+    let stats: [PokemonBaseStat]
 }
 
 struct TypesPokemon: Decodable {
@@ -31,5 +35,24 @@ struct TypesSlotPokemon: Decodable {
     let url: String
 }
 
- 
+struct PokemonBaseStat: Decodable {
+    let base_stat: Int
+    let stat: PokemonStat
+}
 
+struct PokemonStat: Decodable {
+    let name: String
+}
+
+struct PokemonSpecie: Decodable {
+    let flavor_text_entries: [PokemonSpecieDetail]
+}
+ 
+struct PokemonSpecieDetail: Decodable {
+    let flavor_text: String
+    let language: PokemonSpecieDetailLang
+}
+
+struct PokemonSpecieDetailLang: Decodable {
+    let name: String
+}
